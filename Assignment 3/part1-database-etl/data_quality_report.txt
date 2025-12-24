@@ -1,0 +1,44 @@
+FLEXIMART ETL EXECUTION REPORT
+==============================
+
+DATE HANDLING POLICY:
+- registration_date (nullable): Invalid/unparseable dates stored as NULL
+- order_date (NOT NULL): Records with invalid dates are dropped
+All valid dates are converted to YYYY-MM-DD format.
+
+FILE: Raw Data/customers_raw.csv
+--------------------------------------------------
+  Records Processed:        26
+  Duplicates Removed:       5
+  Missing Values Handled:   1
+    - Filled with defaults: 0
+    - Dropped:              1
+  Records Loaded:           20
+  Success Rate:             76.92%
+  Drop Reasons:
+    * missing_email: 1
+
+FILE: Raw Data/products_raw.csv
+--------------------------------------------------
+  Records Processed:        20
+  Duplicates Removed:       0
+  Missing Values Handled:   4
+    - Filled with defaults: 1
+    - Dropped:              3
+  Records Loaded:           17
+  Success Rate:             85.00%
+  Drop Reasons:
+    * missing_price: 3
+
+FILE: Raw Data/sales_raw.csv
+--------------------------------------------------
+  Records Processed:        41
+  Duplicates Removed:       1
+  Missing Values Handled:   15
+    - Filled with defaults: 0
+    - Dropped:              15
+  Records Loaded:           25
+  Success Rate:             60.98%
+  Drop Reasons:
+    * orphan_record_missing_parent: 15
+
